@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">OMDbAPIsdmkt</string>
+    <string name="api_key">e0d85fb6</string>
 </resources>
