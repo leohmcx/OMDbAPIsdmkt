@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">OMDbAPIsdmkt</string>
+    <string name="app_name">OMDb SDM</string>
     <string name="api_key">e0d85fb6</string>
+    <string name="buscar">Buscar filmes</string>
+    <string name="sair">Sair</string>
+    <string name="ifsp">IFSP - São Carlos</string>
+    <string name="menu_aberto">Aberto</string>
+    <string name="menu_fechado">Fechado</string>
 </resources>
