@@ -10,7 +10,7 @@
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:paddingTop="10dp"
-            android:src="@drawable/dado_menu"/>
+            android:src="@drawable/app_icon"/>
 
     <TextView
             android:layout_width="match_parent"

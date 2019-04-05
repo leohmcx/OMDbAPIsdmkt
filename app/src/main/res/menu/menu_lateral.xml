@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Teste RecyclerView -->
+    <!-- RecyclerView -->
     <item
         android:id="@+id/testeRecyclerViewMenuItem"
-        android:icon="@drawable/icone_modo_grafico"
-        android:title="@string/teste_recyclerView" />
+        android:icon="@drawable/icone_menu"
+        android:title="@string/catalogo" />
     <!-- Sair -->
     <item
         android:id="@+id/sairMenuItem"

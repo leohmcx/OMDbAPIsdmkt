@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import br.edu.ifsp.scl.omdbapisdmkt.utils.ConfigSingleton.Modos.MODO_TESTE
-import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoTesteFragment.Companion.newInstance
+import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoListaFragment.Companion.newInstance
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -35,11 +35,17 @@ class MainActivity : AppCompatActivity() {
     fun onNavigationItemSelected(item: MenuItem): Boolean {
         var retorno = false
         when (item.itemId) {
-            R.id.testeRecyclerViewMenuItem -> { substituiFragment(MODO_TESTE)}
-            R.id.sairMenuItem -> { finish() }
+            R.id.testeRecyclerViewMenuItem -> {
+                substituiFragment(MODO_TESTE)
+                retorno = true
+            }
+            R.id.sairMenuItem -> {
+                finish()
+                retorno = true
+            }
         }
         menuLateralDrawerLayout.closeDrawer(GravityCompat.START)
-        return if(item.itemId != null) true else false
+        return retorno
     }
 
     override fun onBackPressed() {

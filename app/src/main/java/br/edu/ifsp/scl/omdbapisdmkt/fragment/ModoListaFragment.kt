@@ -10,17 +10,17 @@ import br.edu.ifsp.scl.omdbapisdmkt.data.OMDb
 import br.edu.ifsp.scl.omdbapisdmkt.R
 import kotlinx.android.synthetic.main.fragment_omdb.*
 
-class ModoTesteFragment : ModoJogoFragment() {
+class ModoListaFragment : ModoApp() {
 
     private val mNicolasCageMovies = listOf(
-        OMDb("Raising Arizona", 1987),
-        OMDb("Vampire's Kiss", 1988),
-        OMDb("Con Air", 1997),
-        OMDb("Gone in 60 Seconds", 1997),
-        OMDb("National Treasure", 2004),
-        OMDb("The Wicker Man", 2006),
-        OMDb("Ghost Rider", 2007),
-        OMDb("Knowing", 2009)
+        OMDb("Raising Arizona", "1987", "1", "filme", "poster1"),
+        OMDb("Vampire's Kiss", "1988", "2", "filme", "poster2"),
+        OMDb("Con Air", "1997", "3", "filme", "poster3"),
+        OMDb("Gone in 60 Seconds", "1997", "4", "filme", "poster4"),
+        OMDb("National Treasure", "2004", "5", "filme", "poster5"),
+        OMDb("The Wicker Man", "2006", "6", "filme", "poster6"),
+        OMDb("Ghost Rider", "2007", "7", "filme", "poster7"),
+        OMDb("Knowing", "2009", "8", "filme", "poster8")
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,7 +47,7 @@ class ModoTesteFragment : ModoJogoFragment() {
     }
 
     companion object {
-        fun newInstance(): ModoTesteFragment =
-            ModoTesteFragment()
+        fun newInstance(): ModoListaFragment =
+            ModoListaFragment()
     }
 }
