@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <!-- Modo busca -->
+    <!-- Teste RecyclerView -->
     <item
-            android:id="@+id/modoGraficoMenuItem"
-            android:icon="@drawable/find"
-            android:title="@string/buscar"/>
+        android:id="@+id/testeRecyclerViewMenuItem"
+        android:icon="@drawable/icone_modo_grafico"
+        android:title="@string/teste_recyclerView" />
     <!-- Sair -->
     <item
-            android:id="@+id/sairMenuItem"
-            android:icon="@drawable/icone_sair"
-            android:title="@string/sair"/>
+        android:id="@+id/sairMenuItem"
+        android:icon="@drawable/icone_sair"
+        android:title="@string/sair" />
 </menu>

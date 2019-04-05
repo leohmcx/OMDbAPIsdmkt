@@ -6,11 +6,11 @@
               android:background="#FFFAFA"
               android:orientation="vertical">
     <!-- Toolbar -->
-    <include layout="@layout/toolbar" />
+    <include layout="@layout/toolbar"/>
 
-    <!-- Fragment de App -->
+    <!-- Fragment principal -->
     <FrameLayout
-            android:id="@+id/fragmentOMDb"
+            android:id="@+id/fragmentJogoFl"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 </LinearLayout>

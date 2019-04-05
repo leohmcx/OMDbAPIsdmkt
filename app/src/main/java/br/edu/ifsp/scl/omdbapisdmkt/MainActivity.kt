@@ -1,11 +1,12 @@
 package br.edu.ifsp.scl.omdbapisdmkt
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
+import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
-import br.edu.ifsp.scl.omdbapisdmkt.ConfigSingleton.Modos.MODO_BUSCA
+import br.edu.ifsp.scl.omdbapisdmkt.utils.ConfigSingleton.Modos.MODO_TESTE
+import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoTesteFragment.Companion.newInstance
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
 
@@ -15,35 +16,34 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-        val abreFechaToogle: ActionBarDrawerToggle =
-            ActionBarDrawerToggle(this, menuLateralDrawerLayout, toolbar, R.string.menu_aberto, R.string.menu_fechado)
+        supportActionBar?.title = resources.getString(R.string.app_name)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val abreFechaToogle = ActionBarDrawerToggle(this, menuLateralDrawerLayout, toolbar, R.string.menu_aberto, R.string.menu_fechado)
         menuLateralDrawerLayout.addDrawerListener(abreFechaToogle)
-        abreFechaToogle.syncState() // mantem o ícone do botão confome status do menu.
+        abreFechaToogle.syncState()
         menuNavigationView.setNavigationItemSelectedListener { onNavigationItemSelected(it) }
-        substituiFragment(MODO_BUSCA) // coloca o modo grafico como modo padrão para abertura do jogo.
-    }
-
-    fun onNavigationItemSelected(item: MenuItem): Boolean {
-        var retorno: Boolean = false
-        when (item.itemId) {
-            R.id.modoGraficoMenuItem -> {
-                substituiFragment(MODO_BUSCA)
-                retorno = true
-            }
-            R.id.sairMenuItem -> {
-                finish()
-                retorno = true
-            }
-        }
-        menuLateralDrawerLayout.closeDrawer(GravityCompat.START)
-        return retorno
+        substituiFragment(MODO_TESTE)
     }
 
     private fun substituiFragment(modo: String) {
-        val modoJogoFragment = if (modo == MODO_BUSCA) ModoBuscaFragment() else ModoBuscaFragment()
-        // Transação para substituição de Fragment
+        var modoJogoFragment = newInstance()
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentOMDb, modoJogoFragment, modo)
+        fragmentTransaction.replace(R.id.fragmentJogoFl, modoJogoFragment, modo)
         fragmentTransaction.commit()
+    }
+
+    fun onNavigationItemSelected(item: MenuItem): Boolean {
+        var retorno = false
+        when (item.itemId) {
+            R.id.testeRecyclerViewMenuItem -> { substituiFragment(MODO_TESTE)}
+            R.id.sairMenuItem -> { finish() }
+        }
+        menuLateralDrawerLayout.closeDrawer(GravityCompat.START)
+        return if(item.itemId != null) true else false
+    }
+
+    override fun onBackPressed() {
+        if (menuLateralDrawerLayout.isDrawerOpen(GravityCompat.START)) { menuLateralDrawerLayout.closeDrawer(GravityCompat.START) }
+        else { super.onBackPressed() }
     }
 }
