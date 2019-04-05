@@ -6,16 +6,16 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import br.edu.ifsp.scl.omdbapisdmkt.R
-import br.edu.ifsp.scl.omdbapisdmkt.data.OMDb
+import br.edu.ifsp.scl.omdbapisdmkt.data.Search
 
-class ListAdapter(private val list: List<OMDb>)
+class ListAdapter(private val list: List<Search>)
     : RecyclerView.Adapter<MovieViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return MovieViewHolder(inflater, parent)
     }
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        val movie: OMDb = list[position]
+        val movie: Search = list[position]
         holder.bind(movie)
     }
     override fun getItemCount(): Int = list.size
@@ -36,11 +36,11 @@ class MovieViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         mTypeView = itemView.findViewById(R.id.list_type)
         mImageView = itemView.findViewById(R.id.list_poster)
     }
-    fun bind(omdb: OMDb) {
-        mTitleView?.text = omdb.title
-        mYearView?.text = omdb.year
-        mOmdbIDView?.text = omdb.omdbid
-        mTypeView?.text = omdb.type
+    fun bind(omdb: Search) {
+        mTitleView?.text = omdb.Title
+        mYearView?.text = omdb.Year
+        mOmdbIDView?.text = omdb.imdbID
+        mTypeView?.text = omdb.Type
         mImageView?.setImageResource(R.drawable.app_icon)
     }
 }
