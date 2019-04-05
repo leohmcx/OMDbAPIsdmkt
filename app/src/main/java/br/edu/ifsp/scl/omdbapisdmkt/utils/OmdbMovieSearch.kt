@@ -35,20 +35,18 @@ class OmdbMovieSearch(val modoListaFragment: ModoListaFragment) {
             try {
                 val gson = Gson()
                 val omdbs: Resposta = gson.fromJson(response.toString(), Resposta::class.java)
-                var listOmdb: MutableList<Search> = mutableListOf<Search>()
+                var listOmdb: MutableList<Search> = mutableListOf()
                 omdbs.Search?.forEach {
                     if (it != null) {
                         listOmdb.add(it)
                     }
                 }
-                // Enviando as tradução ao Handler da thread de UI para serem mostrados na tela
-                modoListaFragment.tradutoHandler.obtainMessage(RESPOSTA_BUSCA, listOmdb).sendToTarget()
+                modoListaFragment.buscaHandler.obtainMessage(RESPOSTA_BUSCA, listOmdb).sendToTarget()
             } catch (jse: JSONException) {
                 modoListaFragment.list_recycler_view.snackbar("Erro na conversão JSON")
             }
         }
     }
-    // Trata erros na requisição ao WS
     inner class ErroListener : Response.ErrorListener {
         override fun onErrorResponse(error: VolleyError?) {
             Log.d("teste","Erro na requisição: ${error.toString()}")
