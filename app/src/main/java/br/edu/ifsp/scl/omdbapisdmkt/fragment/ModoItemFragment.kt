@@ -13,6 +13,7 @@ import br.edu.ifsp.scl.omdbapisdmkt.data.OMDb
 import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoApp.codigosMensagen.RESPOSTA_BUSCA
 import br.edu.ifsp.scl.omdbapisdmkt.utils.OmdbItem
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_omdb_detalhe.*
 
 class ModoItemFragment : ModoApp() {
 
@@ -22,7 +23,7 @@ class ModoItemFragment : ModoApp() {
         super.onCreate(savedInstanceState)
         itemHandler = BuscaHandler()
         val omdbItem = OmdbItem(this)
-        omdbItem.buscar("tt4154756")
+        omdbItem.buscar(arguments!!.getString("imdbID"))
         retainInstance = true
     }
 
@@ -42,61 +43,60 @@ class ModoItemFragment : ModoApp() {
         }
     }
 
-    fun bind(){
-        var tvTitle: TextView? = view?.findViewById(R.id.tv_title)
-        var tvYear: TextView? = view?.findViewById(R.id.tv_year_value)
-        var tvRated: TextView? = view?.findViewById(R.id.tv_rated_value)
-        var tvReleased: TextView? = view?.findViewById(R.id.tv_released_value)
-        var tvGenre: TextView? = view?.findViewById(R.id.tv_genre_value)
-        var tvDirector: TextView? = view?.findViewById(R.id.tv_director_value)
-        var tvWriter: TextView? = view?.findViewById(R.id.tv_writer_value)
-        var tvActors: TextView? = view?.findViewById(R.id.tv_actors_value)
-        var tvPlot: TextView? = view?.findViewById(R.id.tv_plot_value)
-        var tvLanguage: TextView? = view?.findViewById(R.id.tv_language_value)
-        var tvCountry: TextView? = view?.findViewById(R.id.tv_country_value)
-        var ivPoster: ImageView? = view?.findViewById(R.id.iv_poster_value)
-        var tvSource1: TextView? = view?.findViewById(R.id.tv_source1)
-        var tvSource1Value: TextView? = view?.findViewById(R.id.tv_source1_value)
-        var tvSource2: TextView? = view?.findViewById(R.id.tv_source2)
-        var tvSource2Value: TextView? = view?.findViewById(R.id.tv_source2_value)
-        var tvSource3: TextView? = view?.findViewById(R.id.tv_source3)
-        var tvSource3Value: TextView? = view?.findViewById(R.id.tv_source3_value)
-        var tvAwards: TextView? = view?.findViewById(R.id.tv_awards_value)
-        var tvMetascore: TextView? = view?.findViewById(R.id.tv_metascore_value)
-        var tvImdbRating: TextView? = view?.findViewById(R.id.tv_imdbrating_value)
-        var tvImdbVotes: TextView? = view?.findViewById(R.id.tv_imdbvotes_value)
-        var tvType: TextView? = view?.findViewById(R.id.tv_type_value)
-        var tvDvd: TextView? = view?.findViewById(R.id.tv_dvd_value)
-        var tvBoxOffice: TextView? = view?.findViewById(R.id.tv_boxoffice_value)
-        var tvProduction: TextView? = view?.findViewById(R.id.tv_production_value)
-        var tvWebsite: TextView? = view?.findViewById(R.id.tv_website_value)
+    override fun onDetach() {
+        super.onDetach()
+        val fragment = ModoListaFragment()
+        fragmentManager?.beginTransaction()?.replace(R.id.fragmentJogoFl, fragment)?.addToBackStack(null)?.commit()
+    }
 
-        tvTitle?.text = item?.Title
-        tvYear?.text = item?.Year
-        tvRated?.text = item?.Rated
-        tvReleased?.text = item?.Released
-        tvGenre?.text = item?.Genre
-        tvDirector?.text = item?.Director
-        tvWriter?.text = item?.Writer
-        tvActors?.text = item?.Actors
-        tvPlot?.text = item?.Plot
-        tvLanguage?.text = item?.Language
-        tvCountry?.text = item?.Country
-        tvSource1?.text = item?.Ratings?.get(0)?.Source
-        tvSource1Value?.text = item?.Ratings?.get(0)?.Value
-        tvSource2?.text = item?.Ratings?.get(1)?.Source
-        tvSource2Value?.text = item?.Ratings?.get(1)?.Value
-        tvSource3?.text = item?.Ratings?.get(2)?.Source
-        tvSource3Value?.text = item?.Ratings?.get(2)?.Value
-        tvAwards?.text = item?.Awards
-        tvMetascore?.text = item?.Metascore
-        tvImdbRating?.text = item?.imdbRating
-        tvImdbVotes?.text = item?.imdbVotes
-        tvType?.text = item?.Type
-        tvDvd?.text = item?.DVD
-        tvBoxOffice?.text = item?.BoxOffice
-        tvProduction?.text = item?.Production
-        tvWebsite?.text = item?.Website
-        Picasso.get().load(item?.Poster).into(ivPoster)
+    fun bind(){
+
+        if(item?.Type == "movie") {
+            tv_dvd_value.text = item?.DVD
+            tv_boxoffice_value.text = item?.BoxOffice
+            tv_production_value.text = item?.Production
+            tv_website_value.text = item?.Website
+        } else {
+            tv_source2.visibility = View.GONE
+            tv_source2_value.visibility = View.GONE
+            tv_source3.visibility = View.GONE
+            tv_source3_value.visibility = View.GONE
+            tv_dvd.visibility = View.GONE
+            tv_dvd_value.visibility = View.GONE
+            tv_boxoffice.visibility = View.GONE
+            tv_boxoffice_value.visibility = View.GONE
+            tv_production.visibility = View.GONE
+            tv_production_value.visibility = View.GONE
+            tv_website.visibility = View.GONE
+            tv_website_value.visibility = View.GONE
+            tv_writer.visibility = View.GONE
+            tv_writer_value.visibility = View.GONE
+        }
+        tv_title.text = item?.Title
+        tv_year_value.text = item?.Year
+        tv_rated_value.text = item?.Rated
+        tv_released_value.text = item?.Released
+        tv_runtime_value.text = item?.Runtime
+        tv_genre_value.text = item?.Genre
+        tv_director_value.text = item?.Director
+        tv_writer_value.text = item?.Writer
+        tv_actors_value.text = item?.Actors
+        tv_plot_value.text = item?.Plot
+        tv_language_value.text = item?.Language
+        tv_country_value.text = item?.Country
+        tv_awards_value.text = item?.Awards
+        tv_metascore_value.text = item?.Metascore
+        tv_imdbrating_value.text = item?.imdbRating
+        tv_imdbvotes_value.text = item?.imdbVotes
+        tv_type_value.text = item?.Type
+        Picasso.get().load(item?.Poster).into(iv_poster_value)
+
+        val tvSource = listOf(tv_source1, tv_source2, tv_source3)
+        val tvSourceValue = listOf(tv_source1_value, tv_source2_value, tv_source3_value)
+
+        for (i in 0..(item?.Ratings?.size!!)-1) {
+            tvSource[i]?.text = item?.Ratings?.get(i)?.Source
+            tvSourceValue[i]?.text = item?.Ratings?.get(i)?.Value
+        }
     }
 }

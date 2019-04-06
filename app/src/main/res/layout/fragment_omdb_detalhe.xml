@@ -8,6 +8,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/layout_item"
                 android:layout_margin="16dp"
+                android:layout_marginBottom="50dp"
                 android:columnCount="2">
 
         <ImageView android:id="@+id/iv_poster_value"
@@ -82,7 +83,7 @@
                 android:layout_width="150dp"
                 android:layout_height="32dp"
                 android:gravity="center|left"
-                android:text="@string/rated"
+                android:text="@string/runtime"
                 android:textStyle="bold"/>
 
         <TextView
@@ -91,7 +92,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="fill_horizontal|center_vertical"
                 android:gravity="center_vertical"
-                android:text="@string/rated"/>
+                android:text="@string/runtime"/>
 
         <TextView
                 android:id="@+id/tv_genre"

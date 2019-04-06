@@ -19,6 +19,7 @@ data class OMDb(
     , val Year: String
     , val Rated: String
     , val Released: String
+    , val Runtime: String
     , val Genre: String
     , val Director: String
     , val Writer: String
