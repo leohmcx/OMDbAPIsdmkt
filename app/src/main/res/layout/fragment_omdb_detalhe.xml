@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <GridLayout android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/layout_item"
+                android:layout_margin="16dp"
+                android:columnCount="2">
+
+        <ImageView android:id="@+id/iv_poster_value"
+                   android:layout_width="0dp"
+                   android:layout_height="300dp"
+                   android:layout_columnSpan="2"
+                   android:layout_gravity="fill_horizontal"
+                   android:foregroundGravity="center"
+                   android:src="@drawable/app_icon"/>
+
+        <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="@string/title"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_year"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/year"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_year_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/year"/>
+
+        <TextView
+                android:id="@+id/tv_rated"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/rated"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_rated_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/rated"/>
+
+        <TextView
+                android:id="@+id/tv_released"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/released"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_released_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/released"/>
+
+        <TextView
+                android:id="@+id/tv_runtime"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/rated"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_runtime_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/rated"/>
+
+        <TextView
+                android:id="@+id/tv_genre"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/genre"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_genre_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/genre"/>
+
+        <TextView
+                android:id="@+id/tv_director"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/director"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_director_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/director"/>
+
+        <TextView
+                android:id="@+id/tv_language"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/language"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_language_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/language"/>
+
+        <TextView
+                android:id="@+id/tv_country"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/country"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_country_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/country"/>
+
+        <TextView
+                android:id="@+id/tv_awards"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/awards"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_awards_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/awards"/>
+
+        <TextView
+                android:id="@+id/tv_actors"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="@string/actors"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_actors_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/actors"/>
+
+        <TextView
+                android:id="@+id/tv_plot"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="@string/plot"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_plot_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/plot"/>
+
+        <TextView
+                android:id="@+id/tv_ratings"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="@string/ratings"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_source1"
+                android:layout_width="150dp"
+                android:layout_height="52dp"
+                android:gravity="center|left"
+                android:text="@string/source"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_source1_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/value"/>
+
+        <TextView
+                android:id="@+id/tv_source2"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/source"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_source2_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/value"/>
+
+        <TextView
+                android:id="@+id/tv_source3"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/source"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_source3_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/value"/>
+
+        <TextView
+                android:id="@+id/tv_metascore"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/metascore"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_metascore_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/metascore"/>
+
+        <TextView
+                android:id="@+id/tv_imdbrating"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/imdbrating"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_imdbrating_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/imdbrating"/>
+
+        <TextView
+                android:id="@+id/tv_imdbvotes"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/imdbvotes"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_imdbvotes_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/imdbvotes"/>
+
+        <TextView
+                android:id="@+id/tv_type"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/type"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_type_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/type"/>
+
+        <TextView
+                android:id="@+id/tv_dvd"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/dvd"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_dvd_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/dvd"/>
+
+        <TextView
+                android:id="@+id/tv_boxoffice"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/boxoffice"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_boxoffice_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/boxoffice"/>
+
+        <TextView
+                android:id="@+id/tv_production"
+                android:layout_width="150dp"
+                android:layout_height="32dp"
+                android:gravity="center|left"
+                android:text="@string/production"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_production_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/production"/>
+
+        <TextView
+                android:id="@+id/tv_website"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="@string/website"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_website_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:gravity="center_vertical"
+                android:text="@string/website"/>
+
+        <TextView
+                android:id="@+id/tv_writer"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:text="@string/writer"
+                android:layout_columnSpan="2"
+                android:layout_gravity="fill_horizontal"
+                android:gravity="center"
+                android:textSize="20sp"
+                android:textStyle="bold"/>
+
+        <TextView
+                android:id="@+id/tv_writer_value"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="fill_horizontal|center_vertical"
+                android:layout_columnSpan="2"
+                android:text="@string/writer"/>
+
+    </GridLayout>
+</ScrollView>

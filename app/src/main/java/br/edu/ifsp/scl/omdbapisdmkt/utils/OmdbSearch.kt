@@ -3,11 +3,11 @@ package br.edu.ifsp.scl.omdbapisdmkt.utils
 import android.util.Log
 import br.edu.ifsp.scl.omdbapisdmkt.data.Resposta
 import br.edu.ifsp.scl.omdbapisdmkt.data.Search
+import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoApp.Constantes.APP_KEY_FIELD
+import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoApp.Constantes.APP_KEY_VALUE
+import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoApp.Constantes.URL_BASE
+import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoApp.codigosMensagen.RESPOSTA_BUSCA
 import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoListaFragment
-import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoListaFragment.Constantes.APP_KEY_FIELD
-import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoListaFragment.Constantes.APP_KEY_VALUE
-import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoListaFragment.Constantes.URL_BASE
-import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoListaFragment.codigosMensagen.RESPOSTA_BUSCA
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
@@ -20,14 +20,14 @@ import org.jetbrains.anko.design.snackbar
 import org.json.JSONException
 import org.json.JSONObject
 
-class OmdbMovieSearch(val modoListaFragment: ModoListaFragment) {
+class OmdbSearch(val modoListaFragment: ModoListaFragment) {
     fun buscar(titulo: String) {
         val urlSb = StringBuilder(URL_BASE)
         with(urlSb) {append("s=${titulo}&${APP_KEY_FIELD}=${APP_KEY_VALUE}")}
         val url = urlSb.toString()
-        val filaRequisicaoTraducao: RequestQueue = Volley.newRequestQueue(modoListaFragment.context)
+        val filaRequisicao: RequestQueue = Volley.newRequestQueue(modoListaFragment.context)
         var buscaJORequest: JsonObjectRequest = object : JsonObjectRequest(Request.Method.GET,url,null,RespostaListener(),ErroListener()){}
-        filaRequisicaoTraducao.add(buscaJORequest)
+        filaRequisicao.add(buscaJORequest)
     }
 
     inner class RespostaListener : Response.Listener<JSONObject> {
@@ -49,7 +49,6 @@ class OmdbMovieSearch(val modoListaFragment: ModoListaFragment) {
     }
     inner class ErroListener : Response.ErrorListener {
         override fun onErrorResponse(error: VolleyError?) {
-            Log.d("teste","Erro na requisição: ${error.toString()}")
             modoListaFragment.list_recycler_view.snackbar("Erro na requisição: ${error.toString()}")
         }
     }

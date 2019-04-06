@@ -5,6 +5,7 @@ import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
+import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoItemFragment
 import br.edu.ifsp.scl.omdbapisdmkt.utils.ConfigSingleton.Modos.MODO_TESTE
 import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoListaFragment.Companion.newInstance
 import kotlinx.android.synthetic.main.activity_main.*
@@ -26,9 +27,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun substituiFragment(modo: String) {
-        var modoJogoFragment = newInstance()
+        var modoItemFragment = ModoItemFragment()
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentJogoFl, modoJogoFragment, modo)
+        fragmentTransaction.replace(R.id.fragmentJogoFl, modoItemFragment, modo)
         fragmentTransaction.commit()
     }
 
