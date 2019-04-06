@@ -6,8 +6,6 @@ import android.os.Message
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import br.edu.ifsp.scl.omdbapisdmkt.R
 import br.edu.ifsp.scl.omdbapisdmkt.data.OMDb
 import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoApp.codigosMensagen.RESPOSTA_BUSCA
