@@ -9,15 +9,17 @@ import br.edu.ifsp.scl.omdbapisdmkt.R
 import br.edu.ifsp.scl.omdbapisdmkt.data.Search
 import com.squareup.picasso.Picasso
 
-class ListAdapter(private val list: List<Search>)
+class ListAdapter(private val list: List<Search>, val listener: (Int) -> Unit)
     : RecyclerView.Adapter<ViewHolder>() {
+
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ViewHolder(inflater, parent)
     }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val movie: Search = list[position]
-        holder.bind(movie)
+        holder.bind(list[position], position, listener)
     }
     override fun getItemCount(): Int = list.size
 }
@@ -37,11 +39,14 @@ class ViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         tvType = itemView.findViewById(R.id.list_type)
         ivPoster = itemView.findViewById(R.id.list_poster)
     }
-    fun bind(omdb: Search) {
+    fun bind(omdb: Search, pos: Int, listener: (Int) -> Unit) = with(itemView) {
         tvTitle?.text = omdb.Title
         tvYear?.text = omdb.Year
         tvOmdbID?.text = omdb.imdbID
         tvType?.text = omdb.Type
         Picasso.get().load(omdb.Poster).into(ivPoster)
+        ivPoster?.setOnClickListener{
+            listener(pos)
+        }
     }
 }

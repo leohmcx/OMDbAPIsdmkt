@@ -6,7 +6,7 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import android.view.MenuItem
 import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoItemFragment
-import br.edu.ifsp.scl.omdbapisdmkt.utils.ConfigSingleton.Modos.MODO_TESTE
+import br.edu.ifsp.scl.omdbapisdmkt.utils.ConfigSingleton.Modos.MODO_BUSCA
 import br.edu.ifsp.scl.omdbapisdmkt.fragment.ModoListaFragment.Companion.newInstance
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
@@ -23,13 +23,13 @@ class MainActivity : AppCompatActivity() {
         menuLateralDrawerLayout.addDrawerListener(abreFechaToogle)
         abreFechaToogle.syncState()
         menuNavigationView.setNavigationItemSelectedListener { onNavigationItemSelected(it) }
-        substituiFragment(MODO_TESTE)
+        substituiFragment(MODO_BUSCA)
     }
 
-    private fun substituiFragment(modo: String) {
-        var modoItemFragment = ModoItemFragment()
+    fun substituiFragment(modo: String) {
+        var modoListaFragment = if(modo == MODO_BUSCA) newInstance() else ModoItemFragment()
         val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentJogoFl, modoItemFragment, modo)
+        fragmentTransaction.replace(R.id.fragmentJogoFl, modoListaFragment, modo)
         fragmentTransaction.commit()
     }
 
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         var retorno = false
         when (item.itemId) {
             R.id.testeRecyclerViewMenuItem -> {
-                substituiFragment(MODO_TESTE)
+                substituiFragment(MODO_BUSCA)
                 retorno = true
             }
             R.id.sairMenuItem -> {
