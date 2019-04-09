@@ -17,6 +17,11 @@ class ModoItemFragment : ModoApp() {
 
     private var item: OMDb? = null
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = if(view != null) view else
     inflater.inflate(R.layout.fragment_omdb_detalhe, container, false)
 
@@ -28,7 +33,6 @@ class ModoItemFragment : ModoApp() {
         } else {
             itemHandler = BuscaHandler()
             OmdbItem(this).buscar(arguments!!.getString("imdbID"))
-            retainInstance = true
         }
     }
 

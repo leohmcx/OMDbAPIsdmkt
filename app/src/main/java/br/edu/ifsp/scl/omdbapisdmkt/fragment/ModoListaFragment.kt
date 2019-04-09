@@ -19,6 +19,11 @@ class ModoListaFragment : ModoApp() {
 
     private var itens = ArrayList<Search>()
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        retainInstance = true
+    }
+
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = if(view != null) view else
             inflater.inflate(R.layout.fragment_omdb, container, false)
 
@@ -30,7 +35,6 @@ class ModoListaFragment : ModoApp() {
         } else {
             buscaHandler = BuscaHandler()
             OmdbSearch(this).buscar("Avengers")
-            retainInstance = true
         }
     }
 
