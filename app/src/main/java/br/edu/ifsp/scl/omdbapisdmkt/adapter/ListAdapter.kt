@@ -12,8 +12,6 @@ import com.squareup.picasso.Picasso
 class ListAdapter(private val list: List<Search>, val listener: (Int) -> Unit)
     : RecyclerView.Adapter<ViewHolder>() {
 
-
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         return ViewHolder(inflater, parent)

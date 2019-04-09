@@ -17,16 +17,25 @@ class ModoItemFragment : ModoApp() {
 
     private var item: OMDb? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        itemHandler = BuscaHandler()
-        val omdbItem = OmdbItem(this)
-        omdbItem.buscar(arguments!!.getString("imdbID"))
-        retainInstance = true
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? = if(view != null) view else
+    inflater.inflate(R.layout.fragment_omdb_detalhe, container, false)
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if(savedInstanceState != null) {
+            item = savedInstanceState.getParcelable("item")
+            bind()
+        } else {
+            itemHandler = BuscaHandler()
+            OmdbItem(this).buscar(arguments!!.getString("imdbID"))
+            retainInstance = true
+        }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-        inflater.inflate(R.layout.fragment_omdb_detalhe, container, false)
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putParcelable("item", item)
+    }
 
     companion object { fun newInstance(): ModoItemFragment = ModoItemFragment() }
 
@@ -41,14 +50,7 @@ class ModoItemFragment : ModoApp() {
         }
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        val fragment = ModoListaFragment()
-        fragmentManager?.beginTransaction()?.replace(R.id.fragmentJogoFl, fragment)?.addToBackStack(null)?.commit()
-    }
-
     fun bind(){
-
         if(item?.Type == "movie") {
             tv_dvd_value.text = item?.DVD
             tv_boxoffice_value.text = item?.BoxOffice
@@ -92,7 +94,7 @@ class ModoItemFragment : ModoApp() {
         val tvSource = listOf(tv_source1, tv_source2, tv_source3)
         val tvSourceValue = listOf(tv_source1_value, tv_source2_value, tv_source3_value)
 
-        for (i in 0..(item?.Ratings?.size!!)-1) {
+        for (i in 0 until (item?.Ratings?.size!!)-1) {
             tvSource[i]?.text = item?.Ratings?.get(i)?.Source
             tvSourceValue[i]?.text = item?.Ratings?.get(i)?.Value
         }

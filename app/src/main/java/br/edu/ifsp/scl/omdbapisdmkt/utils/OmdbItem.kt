@@ -19,7 +19,7 @@ import org.json.JSONException
 import org.json.JSONObject
 
 class OmdbItem(val modoItemFragment: ModoItemFragment) {
-    fun buscar(imdbID: String) {
+    fun buscar(imdbID: String?) {
         val urlSb = StringBuilder(URL_BASE)
         with(urlSb) {append("i=${imdbID}&${APP_KEY_FIELD}=${APP_KEY_VALUE}")}
         val url = urlSb.toString()

@@ -1,19 +1,25 @@
 package br.edu.ifsp.scl.omdbapisdmkt.data
 
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
+
+@Parcelize
 data class Resposta(
     val totalResults: Int,
     val Response: Boolean,
-    var Search: List<Search?>? = listOf()
-)
+    var Search: MutableList<Search?>? = mutableListOf()
+):Parcelable
 
+@Parcelize
 data class Search(
     val Title: String
     , val Year: String
     , val imdbID: String
     , val Type: String
     , val Poster: String
-)
+):Parcelable
 
+@Parcelize
 data class OMDb(
     val Title: String
     , val Year: String
@@ -40,9 +46,10 @@ data class OMDb(
     , val Production: String
     , val Website: String
     , val Response: String
-)
+):Parcelable
 
+@Parcelize
 data class Ratings(
     val Source: String
     , val Value: String
-)
+):Parcelable

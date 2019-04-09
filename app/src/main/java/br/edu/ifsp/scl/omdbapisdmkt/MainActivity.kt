@@ -23,21 +23,19 @@ class MainActivity : AppCompatActivity() {
         menuLateralDrawerLayout.addDrawerListener(abreFechaToogle)
         abreFechaToogle.syncState()
         menuNavigationView.setNavigationItemSelectedListener { onNavigationItemSelected(it) }
-        substituiFragment(MODO_BUSCA)
+        changeFragment(MODO_BUSCA)
     }
 
-    fun substituiFragment(modo: String) {
+    private fun changeFragment(modo: String) {
         var modoListaFragment = if(modo == MODO_BUSCA) newInstance() else ModoItemFragment()
-        val fragmentTransaction = supportFragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.fragmentJogoFl, modoListaFragment, modo)
-        fragmentTransaction.commit()
+        supportFragmentManager.beginTransaction().replace(R.id.fragmentJogoFl, modoListaFragment, modo).commit()
     }
 
     fun onNavigationItemSelected(item: MenuItem): Boolean {
         var retorno = false
         when (item.itemId) {
             R.id.testeRecyclerViewMenuItem -> {
-                substituiFragment(MODO_BUSCA)
+                changeFragment(MODO_BUSCA)
                 retorno = true
             }
             R.id.sairMenuItem -> {

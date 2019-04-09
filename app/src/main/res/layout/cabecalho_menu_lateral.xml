@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="160dp"
-              android:background="@color/colorPrimary"
-              android:orientation="vertical"
-              android:padding="10dp">
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:background="@color/colorPrimary"
+                android:padding="10dp">
 
     <ImageView
+            android:id="@+id/logo"
             android:layout_width="80dp"
             android:layout_height="80dp"
             android:paddingTop="10dp"
-            android:src="@drawable/app_icon"/>
+            android:src="@drawable/app_icon"
+            android:layout_alignParentBottom="true"/>
 
     <TextView
+            android:id="@+id/app"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:text="@string/app_name"
-            android:textColor="@android:color/white"/>
+            android:textColor="@android:color/white"
+            android:layout_toRightOf="@+id/logo"
+            android:layout_alignTop="@+id/logo"/>
 
     <TextView
+            android:id="@+id/ifsp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="10dp"
             android:text="@string/ifsp"
-            android:textColor="@android:color/white"/>
-</LinearLayout>
+            android:textColor="@android:color/white"
+            android:layout_toRightOf="@+id/logo"
+            android:layout_alignBottom="@+id/logo"/>
+</RelativeLayout>
