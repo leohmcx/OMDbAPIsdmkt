@@ -8,6 +8,7 @@ import android.widget.TextView
 import br.edu.ifsp.scl.omdbapisdmkt.R
 import br.edu.ifsp.scl.omdbapisdmkt.data.Search
 import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.list_item.view.*
 
 class ListAdapter(private val list: List<Search>, val listener: (Int) -> Unit)
     : RecyclerView.Adapter<ViewHolder>() {
@@ -43,7 +44,7 @@ class ViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         tvOmdbID?.text = omdb.imdbID
         tvType?.text = omdb.Type
         Picasso.get().load(omdb.Poster).into(ivPoster)
-        ivPoster?.setOnClickListener{
+        layout_item.setOnClickListener{
             listener(pos)
         }
     }
