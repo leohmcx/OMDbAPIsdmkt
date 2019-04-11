@@ -1,13 +1,14 @@
 package br.edu.ifsp.scl.omdbapisdmkt.fragment
 
+import android.app.SearchManager
+import android.content.Context
 import android.os.Bundle
 import android.os.Handler
 import android.os.Message
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.support.v7.widget.SearchView
+import android.util.Log
+import android.view.*
 import br.edu.ifsp.scl.omdbapisdmkt.R
 import br.edu.ifsp.scl.omdbapisdmkt.adapter.ListAdapter
 import br.edu.ifsp.scl.omdbapisdmkt.data.Search
@@ -19,14 +20,39 @@ import org.jetbrains.anko.design.snackbar
 class ModoListaFragment : ModoApp() {
 
     private var itens = ArrayList<Search>()
+    private var sv: SearchView? = null
+    private var svQuery: SearchView.OnQueryTextListener? = null
+    private var omdbSearch = OmdbSearch(this)
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        inflater?.inflate(R.menu.menu, menu)
+        val searchItem = menu?.findItem(R.id.action_search)
+        val searchManager = activity!!.getSystemService(Context.SEARCH_SERVICE) as SearchManager
+        if(searchItem != null) sv = searchItem.actionView as SearchView
+        if(sv != null) sv?.setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
+        svQuery = object : SearchView.OnQueryTextListener {
+            override fun onQueryTextChange(newText: String): Boolean {
+                Log.i("onQueryTextChange", newText)
+                return true
+            }
+            override fun onQueryTextSubmit(query: String): Boolean {
+                Log.i("onQueryTextSubmit", query)
+                omdbSearch.buscar(query)
+                return true
+            }
+        }
+        sv?.setOnQueryTextListener(svQuery)
+        super.onCreateOptionsMenu(menu, inflater)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         retainInstance = true
+        setHasOptionsMenu(true)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? =
-            inflater.inflate(R.layout.fragment_omdb, container, false)
+        inflater.inflate(R.layout.fragment_omdb, container, false)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,7 +60,7 @@ class ModoListaFragment : ModoApp() {
             bind()
         } else {
             buscaHandler = BuscaHandler()
-            OmdbSearch(this).buscar("impossible")
+            omdbSearch.buscar("impossible")
         }
     }
 

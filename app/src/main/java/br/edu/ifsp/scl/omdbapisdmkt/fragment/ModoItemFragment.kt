@@ -93,7 +93,12 @@ class ModoItemFragment : ModoApp() {
         tv_imdbrating_value.text = item?.imdbRating
         tv_imdbvotes_value.text = item?.imdbVotes
         tv_type_value.text = item?.Type
-        Picasso.get().load(item?.Poster).into(iv_poster_value)
+
+        Picasso.get()
+            .load(item?.Poster)
+            .placeholder(R.drawable.app_icon) // while image is charging
+            .error(R.drawable.app_icon) // case error
+            .into(iv_poster_value)
 
         val tvSource = listOf(tv_source1, tv_source2, tv_source3)
         val tvSourceValue = listOf(tv_source1_value, tv_source2_value, tv_source3_value)

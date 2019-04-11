@@ -43,7 +43,11 @@ class ViewHolder(inflater: LayoutInflater, parent: ViewGroup) :
         tvYear?.text = omdb.Year
         tvOmdbID?.text = omdb.imdbID
         tvType?.text = omdb.Type
-        Picasso.get().load(omdb.Poster).into(ivPoster)
+        Picasso.get()
+            .load(omdb.Poster)
+            .placeholder(R.drawable.app_icon) // while image is charging
+            .error(R.drawable.app_icon) // case error
+            .into(ivPoster)
         layout_item.setOnClickListener{
             listener(pos)
         }
