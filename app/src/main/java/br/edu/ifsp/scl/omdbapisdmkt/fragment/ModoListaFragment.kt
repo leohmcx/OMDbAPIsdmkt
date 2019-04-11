@@ -9,6 +9,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.SearchView
 import android.util.Log
 import android.view.*
+import android.view.inputmethod.InputMethodManager
 import br.edu.ifsp.scl.omdbapisdmkt.R
 import br.edu.ifsp.scl.omdbapisdmkt.adapter.ListAdapter
 import br.edu.ifsp.scl.omdbapisdmkt.data.Search
@@ -37,6 +38,8 @@ class ModoListaFragment : ModoApp() {
             }
             override fun onQueryTextSubmit(query: String): Boolean {
                 Log.i("onQueryTextSubmit", query)
+                var imm = activity!!.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+                imm.hideSoftInputFromWindow(sv?.windowToken, 0)
                 omdbSearch.buscar(query)
                 return true
             }
@@ -78,16 +81,24 @@ class ModoListaFragment : ModoApp() {
     }
 
     private fun bind() {
-        list_recycler_view.apply {
-            layoutManager = GridLayoutManager(context, 2)
-            adapter = ListAdapter(itens) {
-                list_recycler_view.snackbar("clicou no item ${itens[it].Title}")
-                val fragment = ModoItemFragment()
-                val bundle = Bundle()
-                bundle.putString("imdbID", itens[it].imdbID)
-                fragment.arguments = bundle
-                fragmentManager?.beginTransaction()?.replace(R.id.fragmentJogoFl, fragment)?.addToBackStack(null)?.commit()
+        if(itens.size > 0) {
+            list_recycler_view.visibility = View.VISIBLE
+            empty_view.visibility = View.GONE
+            list_recycler_view.apply {
+                layoutManager = GridLayoutManager(context, 2)
+                adapter = ListAdapter(itens) {
+                    list_recycler_view.snackbar("clicou no item ${itens[it].Title}")
+                    val fragment = ModoItemFragment()
+                    val bundle = Bundle()
+                    bundle.putString("imdbID", itens[it].imdbID)
+                    fragment.arguments = bundle
+                    fragmentManager?.beginTransaction()?.replace(R.id.fragmentJogoFl, fragment)?.addToBackStack(null)
+                        ?.commit()
+                }
             }
+        } else {
+            list_recycler_view.visibility = View.GONE
+            empty_view.visibility = View.VISIBLE
         }
     }
 }
